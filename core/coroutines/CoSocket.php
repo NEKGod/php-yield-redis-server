@@ -28,6 +28,12 @@ class CoSocket
         fwrite($this->socket, $string);
     }
 
+    public function writePut($string)
+    {
+        yield waitForWrite($this->socket);
+        fputs($this->socket, $string);
+    }
+
     public function close()
     {
         @fclose($this->socket);

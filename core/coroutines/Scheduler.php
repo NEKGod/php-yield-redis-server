@@ -140,7 +140,7 @@ class Scheduler
 //        var_dump($rSocks);
 //        var_dump($wSocks);
         $eSocks = []; // dummy
-        if (!stream_select($rSocks, $wSocks, $eSocks, $timeout)) {
+        if (!@stream_select($rSocks, $wSocks, $eSocks, $timeout)) {
             return;
         }
         foreach ($rSocks as $socket) {
@@ -159,8 +159,3 @@ class Scheduler
         }
     }
 }
-
-
-
-
-

@@ -3,6 +3,7 @@ require_once "vendor/autoload.php";
 
 use core\coroutines\CoSocket;
 use core\coroutines\Scheduler;
+use core\command\CommandFactory;
 
 
 function server($port): Generator
@@ -25,18 +26,17 @@ function server($port): Generator
  */
 function handleClient(CoSocket $socket): Generator
 {
-    $data = (yield $socket->read(8192));
-    $msg = "Received following request:\n\n";
-    $msgLength = strlen($msg);
-    $response = <<<res
-HTTP/1.1 200 OK
-Content-Type: text/html
-
-$msg
-res;
-    var_dump($response) ;
-    yield $socket->write($response);
-    yield $socket->close();
+    while (true) {
+        $buf = (yield $socket->read(8192));
+        $buf = trim($buf);
+        $command = CommandFactory::execCommand($buf);
+        var_dump($command);
+        if (!$buf || $buf == 'exit') {
+            yield $socket->close();
+            break;
+        }
+        yield $socket->writePut($command);
+    }
 }
 $scheduler = new Scheduler;
 try {
