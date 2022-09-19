@@ -1,6 +1,7 @@
 <?php
 require_once "vendor/autoload.php";
 
+use core\command\CommandException;
 use core\coroutines\CoSocket;
 use core\coroutines\Scheduler;
 use core\command\CommandFactory;
@@ -29,8 +30,12 @@ function handleClient(CoSocket $socket): Generator
     while (true) {
         $buf = (yield $socket->read(8192));
         $buf = trim($buf);
-        $command = CommandFactory::execCommand($buf);
-        var_dump($command);
+        try{
+            $command = CommandFactory::execCommand($buf);
+        }catch (CommandException $e){
+            yield $socket->writePut($e->getMessage());
+            continue;
+        }
         if (!$buf || $buf == 'exit') {
             yield $socket->close();
             break;
@@ -38,11 +43,8 @@ function handleClient(CoSocket $socket): Generator
         yield $socket->writePut($command);
     }
 }
-$scheduler = new Scheduler;
-try {
-    $scheduler->newTask(server(8000));
-    /** @noinspection PhpUnreachableStatementInspection */
-    $scheduler->run();
-} catch (Exception $e) {
 
-}
+$scheduler = new Scheduler;
+$scheduler->newTask(server(8000));
+/** @noinspection PhpUnreachableStatementInspection */
+$scheduler->run();

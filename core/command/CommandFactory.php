@@ -14,7 +14,7 @@ class CommandFactory
     {
         $command = explode(' ', $command);
         if (empty(static::$classMap[$command[static::COMMAND]])) {
-            throw new Exception("命令不存在");
+            throw new CommandException("命令不存在");
         }
         return call_user_func([new static::$classMap[$command[static::COMMAND]], 'baseExecute'], array_slice($command, 1));
     }

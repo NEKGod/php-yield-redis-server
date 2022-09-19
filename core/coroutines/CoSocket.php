@@ -30,12 +30,15 @@ class CoSocket
 
     public function writePut($string)
     {
+        if ($string === NULL) {
+            $string = '(null)';
+        }
         yield waitForWrite($this->socket);
         fputs($this->socket, $string);
     }
 
     public function close()
     {
-        @fclose($this->socket);
+        yield @fclose($this->socket);
     }
 }

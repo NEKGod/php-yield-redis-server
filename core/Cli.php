@@ -11,7 +11,7 @@ class Cli
     {
         $this->bindAddress = $bindAddress;
         $this->connectServer();
-        exec("reset");
+        system("reset");
         $stdout = fopen('php://stdout', 'w+b');
         while (true) {
             $input = $this->inputCommand();
