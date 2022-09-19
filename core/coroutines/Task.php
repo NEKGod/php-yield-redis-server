@@ -5,7 +5,7 @@ use Generator;
 use SplStack;
 
 /**
- * 任务类
+ * 任务管理器
  */
 class Task
 {

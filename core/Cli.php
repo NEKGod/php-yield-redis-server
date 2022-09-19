@@ -12,9 +12,11 @@ class Cli
         $this->bindAddress = $bindAddress;
         $this->connectServer();
         system("reset");
-        $stdout = fopen('php://stdout', 'w+b');
         while (true) {
             $input = $this->inputCommand();
+            if (!$input) {
+                continue;
+            }
             fputs($this->getServerFd(), $input);
             $res = fread($this->getServerFd(), 2048);
             var_dump($res);
@@ -24,7 +26,20 @@ class Cli
     public function inputCommand()
     {
         printf("command > ");
-        return fgets(STDIN);
+        while (1) {
+            echo fread(STDIN, 1024).PHP_EOL;
+            sleep(1);
+        }
+        $command = trim(fgets(STDIN));
+        if ($command == 'cls') {
+            system("reset");
+            return;
+        }else if ($command == 'exit'){
+            exit();
+        }else if ($command == 'start'){
+
+        }
+        return $command;
     }
 
     public function connectServer()
