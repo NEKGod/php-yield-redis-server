@@ -2,18 +2,19 @@
 
 namespace core;
 
+use core\cli\Tty;
+
 class Cli
 {
     private $serverFd = null;
     private $bindAddress;
-
+    private $minCursorOffset = 0;
     public function start($bindAddress = "")
     {
         $this->bindAddress = $bindAddress;
         $this->connectServer();
-        system("reset");
         while (true) {
-            $input = $this->inputCommand();
+            $input = Tty::getSingle()->getUserCommand();
             if (!$input) {
                 continue;
             }
@@ -23,30 +24,14 @@ class Cli
         }
     }
 
-    public function inputCommand()
-    {
-        printf("command > ");
-        while (1) {
-            echo fread(STDIN, 1024).PHP_EOL;
-            sleep(1);
-        }
-        $command = trim(fgets(STDIN));
-        if ($command == 'cls') {
-            system("reset");
-            return;
-        }else if ($command == 'exit'){
-            exit();
-        }else if ($command == 'start'){
 
-        }
-        return $command;
-    }
+
 
     public function connectServer()
     {
         $fp = stream_socket_client($this->bindAddress, $errno, $errstr, 30);
         if (!$fp) {
-            echo "$errstr ($errno)<br />\n";
+            echo "$errstr ($errno)\n";
             die;
         }
         $this->setServerFd($fp);
