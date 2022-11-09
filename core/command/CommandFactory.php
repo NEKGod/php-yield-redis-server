@@ -6,7 +6,12 @@ use Exception;
 
 class CommandFactory
 {
-    public static array $classMap = ['set' => Set::class, 'get' => Get::class,];
+    public static array $classMap = [
+        'set' => Set::class,
+        'get' => Get::class,
+        'del' => Del::class,
+        'exists'   => Exists::class,
+    ];
 
     const COMMAND = 0;
 
