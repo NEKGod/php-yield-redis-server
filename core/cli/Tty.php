@@ -20,6 +20,7 @@ class Tty
 
     public function getUserCommand(): string
     {
+        $this->initialize();
         fwrite(STDOUT, $this->getHeader());
         $command = "";
         $this->setMinCursorOffset(strlen($this->getHeader()));
@@ -31,7 +32,6 @@ class Tty
             }
             fwrite(STDOUT, sprintf("\r\33[0K%s%s\r\33[%dC", $this->getHeader(), $this->getCommand(), $this->getCursorOffset()));
         }
-        $this->initialize();
         echo PHP_EOL;
 //        if ($command == 'cls') {
 //            system("reset");
@@ -156,7 +156,7 @@ class Tty
     {
         if ($is_append) {
             $head = substr($this->command, 0, $this->getCommandCursorOffset());
-            $tail = substr($this->command, $this->getOperateCursorOffset(), strlen($this->command) - strlen($head));
+            $tail = substr($this->command, $this->getOperateCursorOffset(), mb_strlen($this->command) - mb_strlen($head));
             $this->command = $head . $command . $tail;
         }else{
             $this->command = $command;
@@ -165,7 +165,7 @@ class Tty
 
     public function backCommand()
     {
-        $this->command = substr($this->command, 0, -1);
+        $this->command = mb_substr($this->command, 0, -1);
     }
 
     /**

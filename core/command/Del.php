@@ -4,15 +4,17 @@ namespace core\command;
 
 use core\struct\KeyStruct;
 
-class Get extends CommandBase
+class Del extends CommandBase
 {
+
     public function __construct()
     {
         $this->input('key', 0);
     }
 
-    public function execute(array $args = [])
+    public function execute(array $args = []): bool
     {
-        return KeyStruct::getSingle()->get($args['key']);
+
+        return KeyStruct::getSingle()->del($args['key']);
     }
 }

@@ -24,9 +24,6 @@ class Cli
         }
     }
 
-
-
-
     public function connectServer()
     {
         $fp = stream_socket_client($this->bindAddress, $errno, $errstr, 30);

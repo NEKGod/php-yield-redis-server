@@ -12,5 +12,7 @@
         },
         "files": ["core/common.php"]
     },
-    "require": {}
+    "require": {
+      "ext-mbstring": "*"
+    }
 }

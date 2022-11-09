@@ -2,7 +2,7 @@
 
 namespace core\command;
 
-use core\handle\SetHandle;
+use core\struct\KeyStruct;
 
 class Set extends CommandBase
 {
@@ -14,7 +14,7 @@ class Set extends CommandBase
 
     public function execute(array $args = []): bool
     {
-        SetHandle::getSingle()->set($args['key'], $args['value']);
+        KeyStruct::getSingle()->set($args['key'], $args['value']);
         return true;
     }
 }
