@@ -5,18 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4ceb5842-7f5f-4d52-ab9f-37515527b919" name="变更" comment="">
-      <change afterPath="$PROJECT_DIR$/core/struct/KeyStruct.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php-yield-redis-server.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php-yield-redis-server.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/webServers.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/Cli.php" beforeDir="false" afterPath="$PROJECT_DIR$/core/Cli.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/cli/Tty.php" beforeDir="false" afterPath="$PROJECT_DIR$/core/cli/Tty.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/command/Get.php" beforeDir="false" afterPath="$PROJECT_DIR$/core/command/Get.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/command/Set.php" beforeDir="false" afterPath="$PROJECT_DIR$/core/command/Set.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/handle/SetHandle.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/struct/KeyStruct.php" beforeDir="false" afterPath="$PROJECT_DIR$/core/struct/KeyStruct.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,6 +42,7 @@
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "ssh.settings",
     "vue.rearranger.settings.migration": "true"
   }
@@ -64,7 +55,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1667963332620</updated>
-      <workItem from="1667963333836" duration="2627000" />
+      <workItem from="1667963333836" duration="3570000" />
     </task>
     <servers />
   </component>

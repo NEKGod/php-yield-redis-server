@@ -40,4 +40,9 @@ class KeyStruct
         unset($this->data[$key]);
         return true;
     }
+
+    public function exists($key): bool
+    {
+        return isset($this->data[$key]);
+    }
 }
